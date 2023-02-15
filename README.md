@@ -1,1 +1,1 @@
-# react-entrega-kenzie-hub
+# Kenzie Hub - Login Page & Register Page
