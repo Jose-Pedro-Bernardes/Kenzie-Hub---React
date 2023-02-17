@@ -11,5 +11,9 @@ export default function DashBoardPage() {
 
     navigate(`/dashboard/${username}`);
   }
-  return <div>index</div>;
+  return (
+    <>
+      <div className="container"></div>
+    </>
+  );
 }
