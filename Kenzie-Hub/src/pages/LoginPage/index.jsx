@@ -1,5 +1,10 @@
 import React from "react";
 
 export default function LoginPage() {
-  return <div>index</div>;
+  document.title = "Login · Kenzie Hub";
+  return (
+    <>
+      <div className="container"></div>
+    </>
+  );
 }
