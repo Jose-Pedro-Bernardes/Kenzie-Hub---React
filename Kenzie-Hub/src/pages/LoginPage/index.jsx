@@ -1,7 +1,11 @@
 import React from "react";
-
+import * as yup from "yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import FormLogin from "../../components/FormLogin";
+import { Container } from "./LoginPage.styles.js";
 
 export default function LoginPage() {
   document.title = "Login · Kenzie Hub";
@@ -36,8 +40,10 @@ export default function LoginPage() {
 
   return (
     <>
-      <div className="container">
-        <button onClick={() => verifyToast("error")}>ABC</button>
+      <Container>
+        <main>
+          <FormLogin />
+        </main>
         <ToastContainer
           position="top-center"
           autoClose={2000}
@@ -49,7 +55,8 @@ export default function LoginPage() {
           draggable
           theme="dark"
         />
-      </div>
+      </Container>
     </>
   );
 }
+//<button onClick={() => verifyToast("error")}>ABC</button>

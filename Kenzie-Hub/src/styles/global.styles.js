@@ -32,7 +32,9 @@ export const GlobalStyles = createGlobalStyle`
 
 body {
   background: var(--main-black);
-  font-family: 'Inter', sans-serif;
 }
 
+*{
+	font-family: "Inter", sans-serif;
+}
 `;

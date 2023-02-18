@@ -8,4 +8,5 @@ export const axiosInstance = axios.create({
     "Content-Type": "application/json",
     Autorization: `Bearer ${token}`,
   },
+  timeout: 10000,
 });
