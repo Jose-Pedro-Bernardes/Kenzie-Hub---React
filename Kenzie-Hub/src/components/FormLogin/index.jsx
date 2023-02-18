@@ -1,14 +1,29 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import MainButton from "../MainButton";
+import { Form } from "./FormLogin.styles.js";
 
 export default function FormLogin({ onSubmit }) {
   return (
     <>
-      <form onSubmit={onSubmit}>
-        <input type="text" />
-        <input type="password" />
+      <Form onSubmit={onSubmit}>
+        <h1 className="title1">Login</h1>
+        <div className="labeAlign">
+          <label htmlFor="email">Email</label>
+          <input placeholder="Digite seu email.." id="email" type="text" />
+        </div>
+        <div className="labeAlign">
+          <label htmlFor="password">Senha</label>
+          <input
+            placeholder="Digite sua senha.."
+            id="password"
+            type="password"
+          />
+        </div>
         <MainButton text={"Entrar"} />
-      </form>
+        <p>Ainda não possui uma conta?</p>
+        <Link to={"/register"}> Cadastrar </Link>
+      </Form>
     </>
   );
 }

@@ -6,6 +6,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import FormLogin from "../../components/FormLogin";
 import { Container } from "./LoginPage.styles.js";
+import logo from "../../assets/logoDesk.svg";
 
 export default function LoginPage() {
   document.title = "Login · Kenzie Hub";
@@ -41,6 +42,9 @@ export default function LoginPage() {
   return (
     <>
       <Container>
+        <figure>
+          <img src={logo} alt="Kenzie Hub" />
+        </figure>
         <main>
           <FormLogin />
         </main>
