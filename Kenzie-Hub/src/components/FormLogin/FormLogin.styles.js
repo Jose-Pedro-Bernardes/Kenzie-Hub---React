@@ -54,6 +54,7 @@ export const Form = styled.form`
   }
   button {
     margin: 24px 0;
+    transition: 1s;
   }
   p {
     margin-bottom: 22px;
@@ -76,5 +77,12 @@ export const Form = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 1s;
+  }
+
+  @media (min-width: 1100px) {
+    a:hover {
+      background-color: var(--grey-2);
+    }
   }
 `;

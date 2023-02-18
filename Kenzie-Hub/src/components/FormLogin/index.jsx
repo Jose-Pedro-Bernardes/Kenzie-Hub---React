@@ -22,7 +22,7 @@ export default function FormLogin({ onSubmit }) {
         </div>
         <MainButton text={"Entrar"} />
         <p>Ainda não possui uma conta?</p>
-        <Link to={"/register"}> Cadastrar </Link>
+        <Link to={"/cadastrar"}> Cadastrar </Link>
       </Form>
     </>
   );
