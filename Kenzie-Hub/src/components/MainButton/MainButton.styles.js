@@ -13,6 +13,7 @@ export const Button = styled.button`
 
   border: none;
   border-radius: 4px;
+  transition: 0.7s;
 
   @media (min-width: 1100px) {
     cursor: pointer;

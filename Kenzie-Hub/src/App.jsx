@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import DashBoardPage from "./pages/DashBoardPage";
+import Home from "./pages/Home";
 
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/cadastrar" element={<RegisterPage />} />
-        <Route path="/dashboard/:name" element={<DashBoardPage />} />
+        <Route path="/home/:name" element={<Home />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

@@ -7,7 +7,6 @@ import "react-toastify/dist/ReactToastify.css";
 import FormLogin from "../../components/FormLogin";
 import { Container } from "./LoginPage.styles.js";
 import logo from "../../assets/logoDesk.svg";
-import { loginUser } from "../../requests/post";
 import { axiosInstance } from "../../requests/axiosInstance";
 import { useNavigate } from "react-router-dom";
 
@@ -61,7 +60,7 @@ export default function LoginPage() {
       localStorage.setItem("@KenzieHub:userId", response.data.user.id);
       verifyToast("sucess");
       setTimeout(() => {
-        navigate(`/dashboard/${response.data.user.name}`);
+        navigate(`/home/${response.data.user.name}`);
       }, 2000);
     } catch (error) {
       console.log(error);
