@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const Form = styled.form`
   width: 23.063rem;
-  height: 30rem;
-  max-width: 100%;
+  height: 29rem;
+  max-width: 90%;
   padding: 42px 0 20px 0;
 
   display: flex;
@@ -28,7 +28,7 @@ export const Form = styled.form`
 
   .labeAlign {
     width: 20.375rem;
-    max-width: 100%;
+    max-width: 92%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,17 +44,19 @@ export const Form = styled.form`
     input {
       width: 19.1rem;
       height: 3rem;
-      max-width: 100%;
+      max-width: 92%;
       padding-left: 1rem;
       border: none;
       border-radius: 4px;
       background-color: var(--grey-2);
       outline-color: var(--grey-0);
+      color: var(--grey-0);
     }
   }
   button {
     margin: 24px 0;
     transition: 1s;
+    max-width: 90%;
   }
   p {
     margin-bottom: 22px;
@@ -64,9 +66,9 @@ export const Form = styled.form`
   }
 
   a {
-    width: 20.375rem;
+    width: 20rem;
     height: 3rem;
-    max-width: 100%;
+    max-width: 90%;
 
     background-color: var(--grey-1);
     text-decoration: none;
@@ -80,9 +82,29 @@ export const Form = styled.form`
     transition: 1s;
   }
 
+  @media (min-width: 400px) {
+    a {
+      max-width: 100%;
+    }
+    button {
+      max-width: 100%;
+    }
+
+    input {
+      max-width: 100%;
+    }
+
+    .labeAlign {
+      max-width: 100%;
+    }
+  }
+
   @media (min-width: 1100px) {
-    a:hover {
+    a {
       background-color: var(--grey-2);
+    }
+    a:hover {
+      background-color: var(--grey-1);
     }
   }
 `;

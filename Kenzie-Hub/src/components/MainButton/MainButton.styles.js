@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
-  width: 20.375rem;
+  width: 20rem;
   height: 3rem;
   max-width: 100%;
 
