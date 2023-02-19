@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { axiosInstance } from "../../requests/axiosInstance";
 import Header from "../../components/Header";
-import Home from "./";
+import { Container } from "./home.styles.js";
 
 export default function Home() {
   const [username, setUsername] = useState("");
@@ -30,15 +30,17 @@ export default function Home() {
 
   return (
     <>
-      <div className="container">
+      <Container>
         <Header />
         <main>
           <section className="sectionTop">
-            <h1>{username}</h1>
-            <p>{courseModule}</p>
+            <div>
+              <h1>Olá, {username}</h1>
+              <p>{courseModule}</p>
+            </div>
           </section>
         </main>
-      </div>
+      </Container>
     </>
   );
 }
