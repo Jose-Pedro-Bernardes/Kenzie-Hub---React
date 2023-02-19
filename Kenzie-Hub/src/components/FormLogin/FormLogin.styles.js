@@ -55,7 +55,6 @@ export const Form = styled.form`
   }
   button {
     margin: 24px 0;
-    transition: 1s;
     max-width: 90%;
   }
   p {
