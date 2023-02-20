@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import FormRegister from "../../components/FormRegister";
 
 export default function RegisterPage() {
+  document.title = "Cadastrar · Kenzie Hub";
   return (
     <>
       <Container>
