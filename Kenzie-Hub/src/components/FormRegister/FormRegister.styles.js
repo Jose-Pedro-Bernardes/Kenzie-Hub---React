@@ -68,7 +68,10 @@ export const Form = styled.form`
       background-color: var(--grey-2);
       outline-color: var(--grey-0);
       color: var(--grey-0);
-      margin-bottom: 10px;
     }
+  }
+  button {
+    margin: 24px 0;
+    max-width: 90%;
   }
 `;
