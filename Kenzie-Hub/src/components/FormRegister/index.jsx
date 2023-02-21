@@ -3,7 +3,7 @@ import MainButton from "../MainButton/index.jsx";
 import { Form } from "./FormRegister.styles.js";
 import { ToastContainer, toast } from "react-toastify";
 
-export default function FormRegister({ onSubmit }) {
+export default function FormRegister({ onSubmit, register }) {
   function inDevelopToast() {
     const notifyErr = toast.error("Essa página está em desenvolvimento.", {
       position: "top-center",
@@ -33,14 +33,18 @@ export default function FormRegister({ onSubmit }) {
         </div>
         <div className="labeAlign">
           <label htmlFor="password">Senha</label>
-          <input placeholder="Digite sua senha.." id="password" type="text" />
+          <input
+            placeholder="Digite sua senha.."
+            id="password"
+            type="password"
+          />
         </div>
         <div className="labeAlign">
           <label htmlFor="passwordConfirm">Confirmar senha</label>
           <input
             placeholder="Confirme sua senha.."
             id="passwordConfirm"
-            type="text"
+            type="password"
           />
         </div>
         <div className="labeAlign">
