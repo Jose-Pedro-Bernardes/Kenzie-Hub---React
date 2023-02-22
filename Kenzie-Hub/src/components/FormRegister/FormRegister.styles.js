@@ -59,6 +59,15 @@ export const Form = styled.form`
       color: var(--grey-0);
     }
     select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      appearance: none;
+      outline: 1px;
+      box-shadow: none;
+      cursor: pointer;
+      flex: 1;
+      background-image: none;
       width: 20.1rem;
       height: 3.5rem;
       max-width: 100%;
@@ -69,7 +78,64 @@ export const Form = styled.form`
       outline-color: var(--grey-0);
       color: var(--grey-0);
     }
+    select::-ms-expand {
+      display: none;
+    }
+    .select {
+      position: relative;
+      display: flex;
+      width: 20em;
+
+      line-height: 3;
+      background: #5c6664;
+      overflow: hidden;
+      border-radius: 0.25em;
+      max-width: 100%;
+
+      select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        appearance: none;
+        outline: 1px;
+        box-shadow: none;
+        cursor: pointer;
+        flex: 1;
+        background-image: none;
+        width: 20.1rem;
+        height: 3.5rem;
+        max-width: 100%;
+        padding-left: 1rem;
+        border: none;
+        border-radius: 4px;
+        background-color: var(--grey-2);
+        outline-color: var(--grey-0);
+        color: var(--grey-0);
+        font-size: var(--title-3);
+      }
+      select::-ms-expand {
+        display: none;
+      }
+    }
+    .select::after {
+      content: "↓";
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 5px 16px;
+      background: var(--second-black);
+      cursor: pointer;
+      pointer-events: none;
+      transition: 0.25s all ease;
+      color: var(--grey-1);
+      height: 100%;
+      max-width: 100%;
+    }
+    .select:hover::after {
+      color: var(--grey-0);
+    }
   }
+
   button {
     margin: 24px 0;
     max-width: 90%;

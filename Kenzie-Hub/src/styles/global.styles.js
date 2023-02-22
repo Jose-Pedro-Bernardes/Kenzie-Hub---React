@@ -15,6 +15,7 @@ export const GlobalStyles = createGlobalStyle`
 
     --mainWhite: #F8F9FA;
     --main-black: rgba(18, 18, 20, 1);
+    --second-black: rgba(30, 30, 30, 1);
 
     --grey-0: #F8F9FA;
     --grey-1: #868E96;

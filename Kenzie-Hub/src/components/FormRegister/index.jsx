@@ -61,25 +61,28 @@ export default function FormRegister({ onSubmit, register }) {
         </div>
 
         <div className="labeAlign">
-          <label htmlFor="contact">Módulo</label>
-          <select name="contact" id="contact">
-            <option value="first">
-              Primeiro Módulo - Fundamentos Front-end
-            </option>
-            <option value="second">
-              Segundo Módulo - Intermediário Front-end
-            </option>
-            <option value="third">Terceiro Módulo - Front-end Avançado</option>
-            <option value="fourth">
-              Quarto Módulo - Fundamentos do Back-end
-            </option>
-            <option value="fifth">
-              Quinto Módulo - Intermediario e Avançado do Back-end
-            </option>
-            <option value="sixth">
-              Sexto Módulo - Módulo de empregrabilidade
-            </option>
-          </select>
+          <label htmlFor="module">Módulo</label>
+          <div className="select">
+            <select name="select" id="module">
+              <option selected disabled>
+                Escolha o módulo
+              </option>
+              <option value="first">1º Módulo - Front-end Iniciante</option>
+              <option value="second">
+                2º Módulo - Front-end Intermediário
+              </option>
+              <option value="third">3º Módulo - Front-end Avançado</option>
+              <option value="fourth">
+                4º Módulo - Front-end Back-end Iniciante
+              </option>
+              <option value="fifth">
+                5º Módulo - Front-end Intermediario/Avançado
+              </option>
+              <option value="sixth">
+                6º Módulo - Módulo de Empregabilidade
+              </option>
+            </select>
+          </div>
         </div>
         <MainButton onClick={inDevelopToast} type="button" text="Cadastrar" />
       </Form>
