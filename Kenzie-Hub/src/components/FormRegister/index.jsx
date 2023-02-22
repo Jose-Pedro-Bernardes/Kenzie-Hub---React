@@ -65,32 +65,30 @@ export default function FormRegister({ onSubmit, register }) {
         <div className="labeAlign">
           <label htmlFor="module">Módulo</label>
           <div className="select">
-            <select name="select" id="module">
-              <option selected disabled>
-                Escolha o módulo
-              </option>
-              <option value="first" {...register("course_module")}>
+            <select name="select" id="module" {...register("course_module")}>
+              <option disabled>Escolha o módulo</option>
+              <option value="1º Módulo - Front-end Iniciante">
                 1º Módulo - Front-end Iniciante
               </option>
-              <option value="second" {...register("course_module")}>
+              <option value="2º Módulo - Front-end Intermediário">
                 2º Módulo - Front-end Intermediário
               </option>
-              <option value="third" {...register("course_module")}>
+              <option value="3º Módulo - Front-end Avançado">
                 3º Módulo - Front-end Avançado
               </option>
-              <option value="fourth" {...register("course_module")}>
+              <option value=" 4º Módulo - Front-end Back-end Iniciante">
                 4º Módulo - Front-end Back-end Iniciante
               </option>
-              <option value="fifth" {...register("course_module")}>
+              <option value="5º Módulo - Front-end Intermediario/Avançado">
                 5º Módulo - Front-end Intermediario/Avançado
               </option>
-              <option value="sixth" {...register("course_module")}>
+              <option value="6º Módulo - Módulo de Empregabilidade">
                 6º Módulo - Módulo de Empregabilidade
               </option>
             </select>
           </div>
         </div>
-        <MainButton type="button" text="Cadastrar" />
+        <MainButton type="submit" text="Cadastrar" />
       </Form>
     </>
   );
