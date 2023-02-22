@@ -2,7 +2,7 @@ import React from "react";
 import MainButton from "../MainButton/index.jsx";
 import { Form } from "./FormRegister.styles.js";
 
-export default function FormRegister({ onSubmit, register }) {
+export default function FormRegister({ onSubmit, register, errors }) {
   return (
     <>
       <Form onSubmit={onSubmit}>
@@ -16,6 +16,7 @@ export default function FormRegister({ onSubmit, register }) {
             type="text"
             {...register("name")}
           />
+          <span>{errors.name?.message}</span>
         </div>
         <div className="labeAlign">
           <label htmlFor="email">Email</label>
@@ -25,6 +26,7 @@ export default function FormRegister({ onSubmit, register }) {
             type="text"
             {...register("email")}
           />
+          <span>{errors.email?.message}</span>
         </div>
         <div className="labeAlign">
           <label htmlFor="password">Senha</label>
@@ -34,6 +36,7 @@ export default function FormRegister({ onSubmit, register }) {
             type="password"
             {...register("password")}
           />
+          <span>{errors.password?.message}</span>
         </div>
         <div className="labeAlign">
           <label htmlFor="passwordConfirm">Confirmar senha</label>
@@ -51,6 +54,7 @@ export default function FormRegister({ onSubmit, register }) {
             type="text"
             {...register("bio")}
           />
+          <span>{errors.bio?.message}</span>
         </div>
         <div className="labeAlign">
           <label htmlFor="contact">Opção de contato</label>
@@ -60,6 +64,7 @@ export default function FormRegister({ onSubmit, register }) {
             type="text"
             {...register("contact")}
           />
+          <span>{errors.contact?.message}</span>
         </div>
 
         <div className="labeAlign">

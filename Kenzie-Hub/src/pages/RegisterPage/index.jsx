@@ -8,9 +8,25 @@ import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../requests/axiosInstance.js";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export default function RegisterPage() {
-  const { register, handleSubmit } = useForm();
+  const formSchema = yup.object().shape({
+    name: yup.string().required("Nome obrigatório"),
+    email: yup.string().required("Email obrigatório"),
+    password: yup.string().required("Senha obrigatória"),
+    contact: yup.string().required("Telefone obrigatório"),
+    bio: yup.string().required("Biografia obrigatória"),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(formSchema),
+  });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -63,6 +79,7 @@ export default function RegisterPage() {
         <FormRegister
           onSubmit={handleSubmit(registerUser)}
           register={register}
+          errors={errors}
         />
       </Container>
       <ToastContainer

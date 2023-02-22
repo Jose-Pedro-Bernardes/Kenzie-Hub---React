@@ -38,13 +38,21 @@ export const Form = styled.form`
     align-items: flex-start;
     flex-direction: column;
     align-items: center;
-    gap: 22px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+
+    span {
+      align-self: flex-end;
+      color: #e83f5b;
+      margin-right: 3px;
+      margin-top: 10px;
+      font-size: 11px;
+    }
 
     label {
       align-self: flex-start;
       color: var(--grey-0);
       margin-left: 3px;
+      margin-bottom: 22px;
     }
 
     input {
@@ -137,7 +145,7 @@ export const Form = styled.form`
   }
 
   button {
-    margin: 24px 0;
+    margin-bottom: 24px;
     max-width: 90%;
   }
 `;
