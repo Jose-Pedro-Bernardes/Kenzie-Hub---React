@@ -3,17 +3,30 @@ import { Container } from "./register.styles.js";
 import logo from "../../assets/logoDesk.svg";
 import { Link } from "react-router-dom";
 import FormRegister from "../../components/FormRegister";
-import * as yup from "yup";
+import { toast, ToastContainer } from "react-toastify";
+
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { axiosInstance } from "../../requests/axiosInstance.js";
+const notifySucess = toast.success(`Bem vindo!`, {
+  position: "top-right",
+  autoClose: 700,
+  hideProgressBar: true,
+  closeOnClick: true,
+  pauseOnHover: false,
+  draggable: true,
+  progress: undefined,
+  theme: "dark",
+});
 
 export default function RegisterPage() {
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
 
-  function verifyToast(verifier) {
+  function verifyToast(verifier, user) {
     if (verifier == "sucess") {
-      const notifySucess = toast.success("Login bem sucedido!", {
+      const notifySucess = toast.success(`Bem vindo, ${user}!`, {
         position: "top-right",
         autoClose: 700,
         hideProgressBar: true,
@@ -43,6 +56,20 @@ export default function RegisterPage() {
     document.title = "Cadastrar · Kenzie Hub";
   });
 
+  async function registerUser(data) {
+    try {
+      const response = await axiosInstance.post("users", data);
+      const name = response.data.name;
+      verifyToast("sucess", name);
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
+    } catch (error) {
+      console.log(error);
+      verifyToast("error", "");
+    }
+  }
+
   return (
     <>
       <Container>
@@ -52,8 +79,22 @@ export default function RegisterPage() {
           </figure>
           <Link to={"/"}>Voltar</Link>
         </section>
-        <FormRegister />
+        <FormRegister
+          onSubmit={handleSubmit(registerUser)}
+          register={register}
+        />
       </Container>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        theme="dark"
+      />
     </>
   );
 }

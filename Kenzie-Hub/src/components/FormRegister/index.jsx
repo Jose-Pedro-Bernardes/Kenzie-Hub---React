@@ -1,23 +1,8 @@
 import React from "react";
 import MainButton from "../MainButton/index.jsx";
 import { Form } from "./FormRegister.styles.js";
-import { ToastContainer, toast } from "react-toastify";
 
 export default function FormRegister({ onSubmit, register }) {
-  function inDevelopToast() {
-    const notifyErr = toast.error("Essa página está em desenvolvimento.", {
-      position: "top-center",
-      autoClose: 1500,
-      hideProgressBar: true,
-      closeOnClick: false,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
-
-    return notifyErr;
-  }
   return (
     <>
       <Form onSubmit={onSubmit}>
@@ -25,11 +10,21 @@ export default function FormRegister({ onSubmit, register }) {
         <p className="descriptionTop">Rapido e grátis, vamos nessa</p>
         <div className="labeAlign">
           <label htmlFor="name">Nome</label>
-          <input placeholder="Digite seu nome.." id="name" type="text" />
+          <input
+            placeholder="Digite seu nome.."
+            id="name"
+            type="text"
+            {...register("name")}
+          />
         </div>
         <div className="labeAlign">
           <label htmlFor="email">Email</label>
-          <input placeholder="Digite seu email.." id="email" type="text" />
+          <input
+            placeholder="Digite seu email.."
+            id="email"
+            type="text"
+            {...register("email")}
+          />
         </div>
         <div className="labeAlign">
           <label htmlFor="password">Senha</label>
@@ -37,6 +32,7 @@ export default function FormRegister({ onSubmit, register }) {
             placeholder="Digite sua senha.."
             id="password"
             type="password"
+            {...register("password")}
           />
         </div>
         <div className="labeAlign">
@@ -49,7 +45,12 @@ export default function FormRegister({ onSubmit, register }) {
         </div>
         <div className="labeAlign">
           <label htmlFor="bio">Bio</label>
-          <input placeholder="Conte mais sobre você.." id="bio" type="text" />
+          <input
+            placeholder="Conte mais sobre você.."
+            id="bio"
+            type="text"
+            {...register("bio")}
+          />
         </div>
         <div className="labeAlign">
           <label htmlFor="contact">Opção de contato</label>
@@ -57,6 +58,7 @@ export default function FormRegister({ onSubmit, register }) {
             placeholder="Digite seu número de celular.."
             id="contact"
             type="text"
+            {...register("contact")}
           />
         </div>
 
@@ -67,37 +69,29 @@ export default function FormRegister({ onSubmit, register }) {
               <option selected disabled>
                 Escolha o módulo
               </option>
-              <option value="first">1º Módulo - Front-end Iniciante</option>
-              <option value="second">
+              <option value="first" {...register("course_module")}>
+                1º Módulo - Front-end Iniciante
+              </option>
+              <option value="second" {...register("course_module")}>
                 2º Módulo - Front-end Intermediário
               </option>
-              <option value="third">3º Módulo - Front-end Avançado</option>
-              <option value="fourth">
+              <option value="third" {...register("course_module")}>
+                3º Módulo - Front-end Avançado
+              </option>
+              <option value="fourth" {...register("course_module")}>
                 4º Módulo - Front-end Back-end Iniciante
               </option>
-              <option value="fifth">
+              <option value="fifth" {...register("course_module")}>
                 5º Módulo - Front-end Intermediario/Avançado
               </option>
-              <option value="sixth">
+              <option value="sixth" {...register("course_module")}>
                 6º Módulo - Módulo de Empregabilidade
               </option>
             </select>
           </div>
         </div>
-        <MainButton onClick={inDevelopToast} type="button" text="Cadastrar" />
+        <MainButton type="button" text="Cadastrar" />
       </Form>
-
-      <ToastContainer
-        position="top-center"
-        autoClose={2000}
-        hideProgressBar
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        theme="dark"
-      />
     </>
   );
 }
