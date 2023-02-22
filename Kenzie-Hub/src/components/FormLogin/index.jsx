@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import MainButton from "../MainButton";
 import { Form } from "./FormLogin.styles.js";
 
-export default function FormLogin({ onSubmit, register }) {
+export default function FormLogin({ onSubmit, register, errors }) {
   return (
     <>
       <Form onSubmit={onSubmit}>
@@ -16,6 +16,7 @@ export default function FormLogin({ onSubmit, register }) {
             type="text"
             {...register("email")}
           />
+          <span>{errors.email?.message}</span>
         </div>
         <div className="labeAlign">
           <label htmlFor="password">Senha</label>
@@ -25,6 +26,7 @@ export default function FormLogin({ onSubmit, register }) {
             type="password"
             {...register("password")}
           />
+          <span>{errors.password?.message}</span>
         </div>
         <MainButton type="submit" text={"Entrar"} />
         <p>Ainda não possui uma conta?</p>

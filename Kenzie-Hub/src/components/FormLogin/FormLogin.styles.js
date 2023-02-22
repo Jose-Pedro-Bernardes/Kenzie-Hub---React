@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Form = styled.form`
   width: 23.063rem;
-  height: 29rem;
+
   max-width: 90%;
   padding: 42px 0 20px 0;
 
@@ -32,13 +32,22 @@ export const Form = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 22px;
+
     margin-bottom: 20px;
+
+    span {
+      align-self: flex-end;
+      color: #e83f5b;
+      margin-right: 3px;
+      margin-top: 10px;
+      font-size: 11px;
+    }
 
     label {
       align-self: flex-start;
       color: var(--grey-0);
       margin-left: 3px;
+      margin-bottom: 22px;
     }
 
     input {
@@ -54,7 +63,7 @@ export const Form = styled.form`
     }
   }
   button {
-    margin: 24px 0;
+    margin-bottom: 24px;
     max-width: 90%;
   }
   p {
@@ -68,6 +77,7 @@ export const Form = styled.form`
     width: 20rem;
     height: 3rem;
     max-width: 90%;
+    margin-bottom: 24px;
 
     background-color: var(--grey-1);
     text-decoration: none;

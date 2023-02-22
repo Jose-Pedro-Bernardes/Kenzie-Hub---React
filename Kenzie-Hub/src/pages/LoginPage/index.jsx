@@ -12,11 +12,15 @@ import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
   const formSchema = yup.object().shape({
-    email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
-    password: yup.string().required("Senha Obrigatória"),
+    email: yup.string().required("Preencha com seu email."),
+    password: yup.string().required("Preencha com sua senha."),
   });
 
-  const { register, handleSubmit } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(formSchema),
   });
   const navigate = useNavigate();
@@ -75,7 +79,11 @@ export default function LoginPage() {
           <img src={logo} alt="Kenzie Hub" />
         </figure>
         <main>
-          <FormLogin register={register} onSubmit={handleSubmit(loginUser)} />
+          <FormLogin
+            register={register}
+            onSubmit={handleSubmit(loginUser)}
+            errors={errors}
+          />
         </main>
         <ToastContainer
           position="top-center"
