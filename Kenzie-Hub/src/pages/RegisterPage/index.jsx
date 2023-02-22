@@ -4,6 +4,7 @@ import logo from "../../assets/logoDesk.svg";
 import { Link } from "react-router-dom";
 import FormRegister from "../../components/FormRegister";
 import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -31,6 +32,9 @@ export default function RegisterPage() {
       ),
     contact: yup.string().required("Telefone obrigatório."),
     bio: yup.string().required("Biografia obrigatória."),
+    passwordConfirm: yup
+      .string()
+      .oneOf([yup.ref("password"), null], "As senhas precisam ser iguais."),
   });
 
   const {

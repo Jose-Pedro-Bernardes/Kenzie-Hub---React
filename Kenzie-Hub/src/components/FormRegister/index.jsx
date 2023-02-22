@@ -46,7 +46,9 @@ export default function FormRegister({ onSubmit, register, errors }) {
             placeholder="Confirme sua senha.."
             id="passwordConfirm"
             type="password"
+            {...register("passwordConfirm")}
           />
+          <span>{errors.passwordConfirm?.message}</span>
         </div>
         <div className="labeAlign">
           <label htmlFor="bio">Bio</label>
