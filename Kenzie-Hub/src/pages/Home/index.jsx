@@ -35,7 +35,7 @@ export default function Home() {
         <main>
           <section className="sectionTop">
             <div>
-              <h1>Olá, {username}</h1>
+              <h1>Olá, {username}!</h1>
               <p>{courseModule}</p>
             </div>
           </section>

@@ -14,6 +14,7 @@ export default function FormRegister({ onSubmit, register, errors }) {
             placeholder="Digite seu nome.."
             id="name"
             type="text"
+            maxLength={20}
             {...register("name")}
           />
           <span>{errors.name?.message}</span>
@@ -24,6 +25,7 @@ export default function FormRegister({ onSubmit, register, errors }) {
             placeholder="Digite seu email.."
             id="email"
             type="text"
+            maxLength={254}
             {...register("email")}
           />
           <span>{errors.email?.message}</span>

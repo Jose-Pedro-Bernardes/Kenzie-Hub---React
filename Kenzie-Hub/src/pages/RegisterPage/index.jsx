@@ -13,11 +13,24 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 export default function RegisterPage() {
   const formSchema = yup.object().shape({
-    name: yup.string().required("Nome obrigatório"),
-    email: yup.string().required("Email obrigatório"),
-    password: yup.string().required("Senha obrigatória"),
-    contact: yup.string().required("Telefone obrigatório"),
-    bio: yup.string().required("Biografia obrigatória"),
+    name: yup
+      .string()
+      .required("Nome obrigatório")
+      .min(3, "Seu nome deve ter ao menos 3 caractéres."),
+    email: yup
+      .string()
+      .required("Email obrigatório.")
+      .email("Esse email é inválido."),
+    password: yup
+      .string()
+      .required("Senha obrigatória.")
+      .min(8, "Sua senha deve conter ao menos 8 caractéres.")
+      .matches(
+        /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+~`\-={}[\]:;\"'<>,.?/|\\]).+$/,
+        "Sua senha deve conter letras, números e símbolos."
+      ),
+    contact: yup.string().required("Telefone obrigatório."),
+    bio: yup.string().required("Biografia obrigatória."),
   });
 
   const {

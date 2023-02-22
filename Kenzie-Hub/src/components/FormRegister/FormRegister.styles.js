@@ -85,6 +85,8 @@ export const Form = styled.form`
       background-color: var(--grey-2);
       outline-color: var(--grey-0);
       color: var(--grey-0);
+      line-height: 20px;
+      gap: 10px;
     }
     select::-ms-expand {
       display: none;
