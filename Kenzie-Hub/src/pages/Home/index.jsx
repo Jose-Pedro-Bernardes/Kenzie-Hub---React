@@ -4,6 +4,10 @@ import { axiosInstance } from "../../requests/axiosInstance";
 import Header from "../../components/Header";
 import { Container } from "./home.styles.js";
 import { toast, ToastContainer } from "react-toastify";
+import Button from "../../components/Button";
+// import { useForm } from "react-hook-form";
+// import * as yup from "yup";
+// import { yupResolver } from "@hookform/resolvers/yup";
 
 export default function Home() {
   const [user, setUser] = useState({});
@@ -43,17 +47,30 @@ export default function Home() {
       <Container>
         <Header setUser={setUser} showToast={showToast} />
         <main>
-          <section className="sectionTop">
-            <div>
-              {user.name ? (
-                <>
+          {user.name ? (
+            <>
+              <section className="main__header">
+                <div>
                   <h1>Olá, {user.name}!</h1>
-                  <p>{user.course_module}</p>
-                </>
-              ) : null}
-            </div>
-          </section>
-          <section></section>
+                  <p>{user.course_module}</p>{" "}
+                </div>
+              </section>
+              <section className="main__body">
+                <div className="main__body--header">
+                  <h2>Tecnologias</h2>
+                  <Button type="button" text="+" />
+                </div>
+                <div>
+                  <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                </div>
+              </section>
+            </>
+          ) : null}
         </main>
         <ToastContainer
           position="top-center"

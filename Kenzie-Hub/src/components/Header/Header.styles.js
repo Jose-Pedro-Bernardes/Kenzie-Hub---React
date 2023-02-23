@@ -27,8 +27,11 @@ export const HeaderContainer = styled.header`
     transition: 0.5s;
 
     @media (min-width: 1100px) {
+      color: var(--grey-1);
       :hover {
         background-color: var(--grey-2);
+        transform: scale(1.02);
+        color: var(--grey-0);
       }
     }
   }
