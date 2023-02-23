@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import MainButton from "../MainButton";
+import MainButton from "../Button";
 import { Form } from "./FormLogin.styles.js";
 
 export default function FormLogin({ onSubmit, register, errors }) {

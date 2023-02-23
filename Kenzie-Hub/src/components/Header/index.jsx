@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../../assets/logoDesk.svg";
 import { useNavigate } from "react-router-dom";
 import { HeaderContainer } from "./Header.styles.js";
-import MainButton from "../MainButton";
+import MainButton from "../Button";
 
 export default function Header() {
   const navigate = useNavigate();
