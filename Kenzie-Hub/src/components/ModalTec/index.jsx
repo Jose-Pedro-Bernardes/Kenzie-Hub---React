@@ -30,7 +30,7 @@ export default function ModalTec({ onClick }) {
             </div>
           </div>
           <div className="container__buttons">
-            <Button onClick={onClick}></Button>
+            <Button onClick={onClick} type="submit" text="" />
           </div>
         </div>
       </Modal>
