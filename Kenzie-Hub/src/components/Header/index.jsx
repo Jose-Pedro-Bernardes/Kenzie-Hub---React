@@ -1,8 +1,8 @@
 import React from "react";
 import logo from "../../assets/logoDesk.svg";
 import { useNavigate } from "react-router-dom";
-import BackButton from "../BackButton";
 import { HeaderContainer } from "./Header.styles.js";
+import MainButton from "../MainButton";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ export default function Header() {
           <img src={logo} alt="Logo Kenzie Hub" />
         </figure>
 
-        <BackButton onClick={logout} text="Sair" />
+        <MainButton onClick={logout} type="button" text="Sair" />
       </HeaderContainer>
     </>
   );
