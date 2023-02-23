@@ -15,7 +15,7 @@ function App() {
       <GlobalStyles />
       <Routes>
         <Route path="/" element={<LoginPage />} />
-        <Route path="/cadastrar" element={<RegisterPage />} />
+        <Route path="/register" element={<RegisterPage />} />
         <Route path="/home/:name" element={<Home />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

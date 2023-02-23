@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Button = styled.button`
+export const MainButton = styled.button`
   width: 20rem;
   height: 3rem;
   max-width: 100%;

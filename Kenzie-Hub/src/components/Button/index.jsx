@@ -1,12 +1,12 @@
 import React from "react";
-import { Button } from "./MainButton.styles.js";
+import { MainButton } from "./MainButton.styles.js";
 
-export default function MainButton({ text, onClick, type }) {
+export default function Button({ text, onClick, type }) {
   return (
     <>
-      <Button onClick={onClick} type={type}>
+      <MainButton onClick={onClick} type={type}>
         {text}
-      </Button>
+      </MainButton>
     </>
   );
 }

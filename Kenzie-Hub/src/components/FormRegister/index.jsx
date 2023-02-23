@@ -1,5 +1,5 @@
 import React from "react";
-import MainButton from "../Button/index.jsx";
+import Button from "../Button/index.jsx";
 import { Form } from "./FormRegister.styles.js";
 
 export default function FormRegister({ onSubmit, register, errors }) {
@@ -97,7 +97,7 @@ export default function FormRegister({ onSubmit, register, errors }) {
             </select>
           </div>
         </div>
-        <MainButton type="submit" text="Cadastrar" />
+        <Button type="submit" text="Cadastrar" />
       </Form>
     </>
   );

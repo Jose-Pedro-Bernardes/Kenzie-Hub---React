@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import MainButton from "../Button";
+import Button from "../Button";
 import { Form } from "./FormLogin.styles.js";
 
 export default function FormLogin({ onSubmit, register, errors }) {
@@ -28,9 +28,9 @@ export default function FormLogin({ onSubmit, register, errors }) {
           />
           <span>{errors.password?.message}</span>
         </div>
-        <MainButton type="submit" text={"Entrar"} />
+        <Button type="submit" text={"Entrar"} />
         <p>Ainda não possui uma conta?</p>
-        <Link to={"/cadastrar"}> Cadastrar </Link>
+        <Link to={"/register"}> Cadastrar </Link>
       </Form>
     </>
   );
