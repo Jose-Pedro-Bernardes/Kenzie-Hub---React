@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const token = localStorage.getItem("@kenzieHub:userToken");
+const token = localStorage.getItem("@KenzieHub:token");
 
 export const axiosInstance = axios.create({
   baseURL: "https://kenziehub.herokuapp.com/",
