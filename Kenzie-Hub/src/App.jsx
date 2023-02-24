@@ -5,8 +5,8 @@ import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import NotFound from "./pages/NotFound";
-import { ResetStyles } from "./styles/reset.styles.js";
-import { GlobalStyles } from "./styles/global.styles.js";
+import { ResetStyles } from "./global/reset.styles.js";
+import { GlobalStyles } from "./global/global.styles.js";
 
 function App() {
   return (
