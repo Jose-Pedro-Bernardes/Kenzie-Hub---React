@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../../assets/logoDesk.svg";
 import { useNavigate } from "react-router-dom";
-import { HeaderContainer } from "./Header.styles.js";
+import { HeaderContainer } from "./header.styles.js";
 import Button from "../Button";
 
 export default function Header({ setUser, showToast }) {

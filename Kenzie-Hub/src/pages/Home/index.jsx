@@ -1,16 +1,17 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../../requests/axiosInstance";
 import Header from "../../components/Header";
 import { Container } from "./home.styles.js";
 import { toast, ToastContainer } from "react-toastify";
 import Button from "../../components/Button";
+import Teclist from "../../components/TecList";
 // import { useForm } from "react-hook-form";
 // import * as yup from "yup";
 // import { yupResolver } from "@hookform/resolvers/yup";
 
 export default function Home() {
   const [user, setUser] = useState({});
+  const [tecList, setTecLit] = useState([]);
 
   function showToast() {
     const warningToast = toast.warn("Você deslogou. 🤷‍♂️", {
@@ -50,7 +51,7 @@ export default function Home() {
           {user.name ? (
             <>
               <section className="main__header">
-                <div>
+                <div className="align-between">
                   <h1>Olá, {user.name}!</h1>
                   <p>{user.course_module}</p>{" "}
                 </div>
@@ -60,14 +61,9 @@ export default function Home() {
                   <h2>Tecnologias</h2>
                   <Button type="button" text="+" />
                 </div>
-                <div>
-                  <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                  </ul>
-                </div>
+              </section>
+              <section className="section-list">
+                <Teclist />
               </section>
             </>
           ) : null}
