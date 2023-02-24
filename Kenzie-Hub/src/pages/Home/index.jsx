@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { axiosInstance } from "../../requests/axiosInstance";
+import { axiosInstance } from "../../axios/axiosInstance";
 import Header from "../../components/Header";
 import { Container } from "./home.styles.js";
 import { ToastContainer } from "react-toastify";

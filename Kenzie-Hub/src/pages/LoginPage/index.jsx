@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import FormLogin from "../../components/FormLogin";
 import { Container } from "./loginPage.styles.js";
 import logo from "../../assets/logoDesk.svg";
-import { axiosInstance } from "../../requests/axiosInstance";
+import { axiosInstance } from "../../axios/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import { verifyToast } from "../../helpers/verifyToast.js";
 
@@ -25,7 +25,6 @@ export default function LoginPage() {
     resolver: yupResolver(formSchema),
   });
   const navigate = useNavigate();
-  //Login bem sucedido!
 
   useEffect(() => {
     document.title = "Login · Kenzie Hub";
