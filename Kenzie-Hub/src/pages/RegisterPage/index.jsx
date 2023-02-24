@@ -3,7 +3,7 @@ import { Container } from "./register.styles.js";
 import logo from "../../assets/logoDesk.svg";
 import { Link } from "react-router-dom";
 import FormRegister from "../../components/FormRegister";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
@@ -11,36 +11,9 @@ import { useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../requests/axiosInstance.js";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { verifyToast } from "../../helpers/verifyToast.js";
 
 export default function RegisterPage() {
-  function verifyToast(verifier) {
-    if (verifier == "sucess") {
-      const notifySucess = toast.success("Usuário cadastrado!!", {
-        position: "top-right",
-        autoClose: 700,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
-      return notifySucess;
-    } else if (verifier == "error") {
-      const notifyErr = toast.error("Ops! Algo deu errado.", {
-        position: "top-right",
-        autoClose: 1500,
-        hideProgressBar: true,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
-      return notifyErr;
-    }
-  }
-
   const formSchema = yup.object().shape({
     name: yup
       .string()
@@ -72,6 +45,7 @@ export default function RegisterPage() {
   } = useForm({
     resolver: yupResolver(formSchema),
   });
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -81,7 +55,7 @@ export default function RegisterPage() {
   async function registerUser(data) {
     try {
       const response = await axiosInstance.post("users", data);
-      verifyToast("sucess");
+      verifyToast("success", "Usuário cadastrado!");
       setTimeout(() => {
         navigate("/");
       }, 2000);

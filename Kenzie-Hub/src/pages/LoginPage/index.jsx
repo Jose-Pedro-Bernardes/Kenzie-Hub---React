@@ -2,13 +2,14 @@ import React, { useEffect } from "react";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import FormLogin from "../../components/FormLogin";
 import { Container } from "./loginPage.styles.js";
 import logo from "../../assets/logoDesk.svg";
 import { axiosInstance } from "../../requests/axiosInstance";
 import { useNavigate } from "react-router-dom";
+import { verifyToast } from "../../helpers/verifyToast.js";
 
 export default function LoginPage() {
   const formSchema = yup.object().shape({
@@ -24,34 +25,7 @@ export default function LoginPage() {
     resolver: yupResolver(formSchema),
   });
   const navigate = useNavigate();
-
-  function verifyToast(verifier) {
-    if (verifier == "sucess") {
-      const notifySucess = toast.success("Login bem sucedido!", {
-        position: "top-right",
-        autoClose: 700,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
-      return notifySucess;
-    } else if (verifier == "error") {
-      const notifyErr = toast.error("Ops! Algo deu errado.", {
-        position: "top-right",
-        autoClose: 1500,
-        hideProgressBar: true,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
-      return notifyErr;
-    }
-  }
+  //Login bem sucedido!
 
   useEffect(() => {
     document.title = "Login · Kenzie Hub";
@@ -62,7 +36,7 @@ export default function LoginPage() {
       const response = await axiosInstance.post("sessions", data);
       localStorage.setItem("@KenzieHub:token", response.data.token);
       localStorage.setItem("@KenzieHub:userId", response.data.user.id);
-      verifyToast("sucess");
+      verifyToast("success", "Login bem sucedido!");
       setTimeout(() => {
         navigate(`/home/${response.data.user.name}`);
       }, 2000);
@@ -100,4 +74,3 @@ export default function LoginPage() {
     </>
   );
 }
-//<button onClick={() => verifyToast("error")}>ABC</button>
