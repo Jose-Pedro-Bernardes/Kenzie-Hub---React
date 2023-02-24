@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../Button";
-import { Modal } from "./ModalTec.styles.js";
+import { Modal } from "./modalTec.styles.js";
 
 export default function ModalTec({ onClick }) {
   return (

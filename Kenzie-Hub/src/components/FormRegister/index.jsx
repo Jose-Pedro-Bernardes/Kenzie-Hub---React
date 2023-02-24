@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../Button/index.jsx";
-import { Form } from "./FormRegister.styles.js";
+import { Form } from "./formRegister.styles.js";
 
 export default function FormRegister({ onSubmit, register, errors }) {
   return (

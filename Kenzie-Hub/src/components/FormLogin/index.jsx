@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Button from "../Button";
-import { Form } from "./FormLogin.styles.js";
+import { Form } from "./formLogin.styles.js";
 
 export default function FormLogin({ onSubmit, register, errors }) {
   return (

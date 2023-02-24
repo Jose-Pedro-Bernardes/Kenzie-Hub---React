@@ -22,7 +22,7 @@ export const Container = styled.div`
       display: flex;
       justify-content: center;
 
-      div {
+      .align-between {
         width: 48.75rem;
         max-width: 95%;
 
@@ -86,10 +86,15 @@ export const Container = styled.div`
         }
       }
     }
-
+    .section-list {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+    }
     @media (min-width: 800px) {
       .main__header {
-        div {
+        .align-between {
           flex-direction: row;
           align-items: center;
           justify-content: space-between;
