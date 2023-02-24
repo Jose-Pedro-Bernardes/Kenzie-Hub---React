@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../../requests/axiosInstance";
 import Header from "../../components/Header";
 import { Container } from "./home.styles.js";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import Button from "../../components/Button";
 import Teclist from "../../components/TecList";
 // import { useForm } from "react-hook-form";
@@ -12,21 +12,6 @@ import Teclist from "../../components/TecList";
 export default function Home() {
   const [user, setUser] = useState({});
   const [tecList, setTecLit] = useState([]);
-
-  function showToast() {
-    const warningToast = toast.warn("Você deslogou. 🤷‍♂️", {
-      position: "top-center",
-      autoClose: 1500,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
-
-    return warningToast;
-  }
 
   useEffect(() => {
     document.title = "Home · Kenzie Hub";
@@ -46,7 +31,7 @@ export default function Home() {
   return (
     <>
       <Container>
-        <Header setUser={setUser} showToast={showToast} />
+        <Header setUser={setUser} />
         <main>
           {user.name ? (
             <>
