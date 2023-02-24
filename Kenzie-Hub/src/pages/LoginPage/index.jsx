@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import FormLogin from "../../components/FormLogin";
-import { Container } from "./LoginPage.styles.js";
+import { Container } from "./loginPage.styles.js";
 import logo from "../../assets/logoDesk.svg";
 import { axiosInstance } from "../../requests/axiosInstance";
 import { useNavigate } from "react-router-dom";
