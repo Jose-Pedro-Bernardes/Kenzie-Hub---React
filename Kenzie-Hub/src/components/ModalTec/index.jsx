@@ -1,39 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../Button";
-import { Modal } from "./modalTec.styles.js";
+import Modal from "react-modal";
+import { Container } from "./modalTec.styles.js";
 
-export default function ModalTec({ onClick }) {
+Modal.setAppElement("#root");
+
+export default function ModalTec({ onSubmit, modalIsOpen, closeModal }) {
   return (
-    <>
-      <Modal>
-        <div className="container">
-          <div className="container__header"></div>
-          <div className="container__inputs">
-            <div className="label-align">
-              <label htmlFor="name">Nome da tecnologia</label>
-              <input
-                id="name"
-                type="text"
-                placeholder="Preencha com a tecnologia.."
-              />
-            </div>
-            <div className="label-align">
-              <label htmlFor="status">Selecione o status</label>
-              <div className="select">
-                <select name="select" id="status">
-                  <option disabled>Escolha a tecnologia</option>
-                  <option value="Iniciante">Iniciante</option>
-                  <option value="Intermediário">Intermediário</option>
-                  <option value="Avançado">Avançado</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div className="container__buttons">
-            <Button onClick={onClick} type="submit" text="" />
-          </div>
+    <Modal
+      className="modal"
+      overlayClassName="modal-overlay"
+      isOpen={modalIsOpen}
+      onRequestClose={closeModal}
+      contentLabel="Example Modal"
+      closeTimeoutMS={500}
+    >
+      <Container>
+        <button className="closeModal" onClick={closeModal} type="button">
+          X
+        </button>
+        <div className="container__header">
+          <h3>Cadastrar tecnogia</h3>
         </div>
-      </Modal>
-    </>
+        <form onSubmit={onSubmit}>
+          <div className="label-align">
+            <label htmlFor="name">Nome da tecnologia</label>
+            <input
+              id="name"
+              type="text"
+              placeholder="Preencha com a tecnologia.."
+            />
+          </div>
+          <div className="label-align">
+            <label htmlFor="status">Selecione o status</label>
+            <div className="select">
+              <select name="select" id="status">
+                <option disabled>Escolha a tecnologia</option>
+                <option value="Iniciante">Iniciante</option>
+                <option value="Intermediário">Intermediário</option>
+                <option value="Avançado">Avançado</option>
+              </select>
+            </div>
+          </div>
+          <Button type="submit" text="Cadastrar Tecnologia" />
+        </form>
+      </Container>
+    </Modal>
   );
 }

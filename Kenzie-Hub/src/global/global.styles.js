@@ -35,7 +35,49 @@ body {
   background: var(--main-black);
 }
 
+.modal{
+  background-color: #212529;
+  width: 369px;
+  max-width: 95%;
+  height: 372px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border-radius: 4px;
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 400ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open{
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+  opacity: 0;
+}
+
+.modal-overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(18, 18, 20, 0.5);
+}
+
 *{
 	font-family: "Inter", sans-serif;
+  h3{
+    font-family: "Inter", sans-serif;
+  }
+  div{
+    font-family: "Inter", sans-serif;
+  }
 }
 `;

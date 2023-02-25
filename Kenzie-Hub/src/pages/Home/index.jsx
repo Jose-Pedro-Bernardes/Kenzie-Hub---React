@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 import Button from "../../components/Button";
 import Teclist from "../../components/TecList";
 import { useForm } from "react-hook-form";
+import ModalTec from "../../components/ModalTec";
 // import * as yup from "yup";
 // import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -18,6 +19,7 @@ export default function Home() {
 
   const [user, setUser] = useState({});
   const [tecList, setTecLit] = useState([]);
+  const [modalIsOpen, setIsOpen] = useState(false);
   const userId = localStorage.getItem("@KenzieHub:userId");
 
   useEffect(() => {
@@ -44,6 +46,14 @@ export default function Home() {
     }
   }
 
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   return (
     <>
       <Container>
@@ -60,7 +70,7 @@ export default function Home() {
               <section className="main__body">
                 <div className="main__body--header">
                   <h2>Tecnologias</h2>
-                  <Button type="button" text="+" />
+                  <Button onClick={openModal} type="button" text="+" />
                 </div>
               </section>
               <section className="section-list">
@@ -69,6 +79,7 @@ export default function Home() {
             </>
           ) : null}
         </main>
+        <ModalTec modalIsOpen={modalIsOpen} closeModal={closeModal} />
         <ToastContainer
           position="top-center"
           autoClose={1500}
