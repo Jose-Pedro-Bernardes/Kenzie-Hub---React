@@ -7,6 +7,7 @@ import Button from "../../components/Button";
 import Teclist from "../../components/TecList";
 import { useForm } from "react-hook-form";
 import ModalTec from "../../components/ModalTec";
+import { verifyToast } from "../../helpers/verifyToast.js";
 // import * as yup from "yup";
 // import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -18,7 +19,7 @@ export default function Home() {
   } = useForm();
 
   const [user, setUser] = useState({});
-  const [tecList, setTecLit] = useState([]);
+  const [tecList, setTecList] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
   const userId = localStorage.getItem("@KenzieHub:userId");
 
@@ -28,7 +29,7 @@ export default function Home() {
     async function catchUser() {
       try {
         const res = await axiosInstance.get(`users/${userId}`);
-        setTecLit(res.data.techs);
+        setTecList(res.data.techs);
         setUser(res.data);
       } catch (error) {
         console.log(error.message);
@@ -40,9 +41,14 @@ export default function Home() {
   async function createTech(data) {
     try {
       const res = await axiosInstance.post(`users/techs`, data);
-      setTecLit([...tecList, res.data]);
+      setTecList([...tecList, res.data]);
+      verifyToast("success", "Tecnologia adicionada!");
+      setTimeout(() => {
+        setIsOpen(false);
+      }, 1000);
     } catch (error) {
       console.log(error.message);
+      verifyToast("error");
     }
   }
 
@@ -79,7 +85,11 @@ export default function Home() {
             </>
           ) : null}
         </main>
-        <ModalTec modalIsOpen={modalIsOpen} closeModal={closeModal} />
+        <ModalTec
+          register={register}
+          modalIsOpen={modalIsOpen}
+          closeModal={closeModal}
+        />
         <ToastContainer
           position="top-center"
           autoClose={1500}

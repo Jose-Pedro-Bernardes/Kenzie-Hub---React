@@ -5,7 +5,12 @@ import { Container } from "./modalTec.styles.js";
 
 Modal.setAppElement("#root");
 
-export default function ModalTec({ onSubmit, modalIsOpen, closeModal }) {
+export default function ModalTec({
+  onSubmit,
+  modalIsOpen,
+  closeModal,
+  register,
+}) {
   return (
     <Modal
       className="modal"
@@ -29,12 +34,13 @@ export default function ModalTec({ onSubmit, modalIsOpen, closeModal }) {
               id="name"
               type="text"
               placeholder="Preencha com a tecnologia.."
+              {...register("title")}
             />
           </div>
           <div className="label-align">
             <label htmlFor="status">Selecione o status</label>
             <div className="select">
-              <select name="select" id="status">
+              <select name="select" id="status" {...register("status")}>
                 <option disabled>Escolha a tecnologia</option>
                 <option value="Iniciante">Iniciante</option>
                 <option value="Intermediário">Intermediário</option>
