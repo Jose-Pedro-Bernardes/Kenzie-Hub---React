@@ -6,7 +6,7 @@ import { ToastContainer } from "react-toastify";
 import Button from "../../components/Button";
 import Teclist from "../../components/TecList";
 import { useForm } from "react-hook-form";
-import ModalTec from "../../components/ModalTec";
+import CreateTechModal from "../../components/CreateTechModal";
 import { verifyToast } from "../../helpers/verifyToast.js";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -100,7 +100,7 @@ export default function Home() {
             </>
           ) : null}
         </main>
-        <ModalTec
+        <CreateTechModal
           register={register}
           modalIsOpen={modalIsOpen}
           closeModal={closeModal}

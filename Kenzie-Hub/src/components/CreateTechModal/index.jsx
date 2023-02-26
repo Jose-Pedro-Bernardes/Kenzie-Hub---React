@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Button from "../Button";
 import Modal from "react-modal";
-import { Container } from "./modalTec.styles.js";
+import { Container } from "./createTechModal.styles.js";
 
 Modal.setAppElement("#root");
 
-export default function ModalTec({
+export default function CreateTechModal({
   onSubmit,
   modalIsOpen,
   closeModal,
