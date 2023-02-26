@@ -10,8 +10,10 @@ import ModalTec from "../../components/ModalTec";
 import { verifyToast } from "../../helpers/verifyToast.js";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
   const formSchema = yup.object().shape({
     title: yup
       .string()
@@ -33,7 +35,9 @@ export default function Home() {
 
   useEffect(() => {
     document.title = "Home · Kenzie Hub";
-
+    if (!localStorage.getItem("@KenzieHub:userId")) {
+      navigate("/");
+    }
     async function catchUser() {
       try {
         const res = await axiosInstance.get(`users/${userId}`);
