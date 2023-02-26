@@ -54,14 +54,12 @@ export default function Home() {
       });
       setTecList([...tecList, res.data]);
       verifyToast("success", "Tecnologia adicionada!");
-      console.log(tecList);
       setTimeout(() => {
         setIsOpen(false);
       }, 1000);
     } catch (error) {
       console.log(error.message);
       verifyToast("error");
-      console.log(tecList);
     }
   }
 
