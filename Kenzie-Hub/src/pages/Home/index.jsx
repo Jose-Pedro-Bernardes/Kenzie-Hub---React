@@ -30,6 +30,7 @@ export default function Home() {
   const [tecList, setTecList] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
   const userId = localStorage.getItem("@KenzieHub:userId");
+
   useEffect(() => {
     document.title = "Home · Kenzie Hub";
 
