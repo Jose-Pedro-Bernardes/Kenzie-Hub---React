@@ -50,6 +50,20 @@ export default function RegisterPage() {
 
   useEffect(() => {
     document.title = "Cadastrar · Kenzie Hub";
+    if (localStorage.getItem("@KenzieHub:userId")) {
+      const userId = localStorage.getItem("@KenzieHub:userId");
+      async function isThereaUser() {
+        try {
+          setTimeout(async () => {
+            const response = await axiosInstance.get(`users/${userId}`);
+            navigate(`/home/${response.data.name}`);
+          }, 2500);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      isThereaUser();
+    }
   });
 
   async function registerUser(data) {
