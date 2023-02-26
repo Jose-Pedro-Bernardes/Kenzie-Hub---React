@@ -35,7 +35,7 @@ export default function ModalTec({
               id="title"
               type="text"
               placeholder="Preencha com a tecnologia.."
-              maxLength={20}
+              maxLength={30}
               {...register("title")}
             />
             <span>{errors.title?.message}</span>

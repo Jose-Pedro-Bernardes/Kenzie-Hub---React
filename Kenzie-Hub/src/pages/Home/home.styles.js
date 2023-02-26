@@ -7,6 +7,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 40px;
 
   main {
     width: 100%;
@@ -50,12 +51,12 @@ export const Container = styled.div`
       justify-content: center;
 
       margin-top: 20px;
-      margin-bottom: 20px;
 
       .main__body--header {
         width: 48.75rem;
         max-width: 95%;
         height: 2rem;
+        margin-bottom: 31px;
 
         display: flex;
         justify-content: space-between;
