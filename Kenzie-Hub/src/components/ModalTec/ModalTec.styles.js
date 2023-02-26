@@ -22,13 +22,15 @@ export const Container = styled.div`
     background-color: var(--grey-2);
     display: flex;
     align-items: center;
+    justify-content: center;
     border-radius: 4px 4px 0 0;
     margin-bottom: 24px;
     h3 {
       font-size: var(--title-3);
       font-weight: 700;
-      margin-left: 13px;
       color: var(--grey-0);
+      width: 20.375rem;
+      max-width: 92%;
     }
   }
   form {
@@ -44,6 +46,14 @@ export const Container = styled.div`
       flex-direction: column;
       align-items: center;
       margin-bottom: 20px;
+
+      span {
+        align-self: flex-end;
+        color: #e83f5b;
+        margin-right: 3px;
+        margin-top: 10px;
+        font-size: 11px;
+      }
 
       label {
         align-self: flex-start;
@@ -121,6 +131,7 @@ export const Container = styled.div`
     }
     button {
       margin-top: 10px;
+      margin-bottom: 20px;
     }
   }
 `;

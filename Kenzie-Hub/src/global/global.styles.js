@@ -47,6 +47,7 @@ body {
   bottom: 0;
   margin: auto;
   border-radius: 4px;
+  padding-bottom: 20px;
 }
 
 .ReactModal__Overlay {

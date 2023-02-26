@@ -8,21 +8,28 @@ import Teclist from "../../components/TecList";
 import { useForm } from "react-hook-form";
 import ModalTec from "../../components/ModalTec";
 import { verifyToast } from "../../helpers/verifyToast.js";
-// import * as yup from "yup";
-// import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export default function Home() {
+  const formSchema = yup.object().shape({
+    title: yup
+      .string()
+      .required("Preencha com a tecnologia.")
+      .matches(/^[^<>=$!()+{}\/?;.,%#@'"[\] ]*$/, "Caracteres inválidos."),
+  });
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    resolver: yupResolver(formSchema),
+  });
 
   const [user, setUser] = useState({});
   const [tecList, setTecList] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
   const userId = localStorage.getItem("@KenzieHub:userId");
-
   useEffect(() => {
     document.title = "Home · Kenzie Hub";
 
@@ -36,19 +43,24 @@ export default function Home() {
       }
     }
     catchUser();
-  });
+  }, []);
 
   async function createTech(data) {
+    const token = localStorage.getItem("@KenzieHub:token");
     try {
-      const res = await axiosInstance.post(`users/techs`, data);
+      const res = await axiosInstance.post("users/techs", data, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       setTecList([...tecList, res.data]);
       verifyToast("success", "Tecnologia adicionada!");
+      console.log(tecList);
       setTimeout(() => {
         setIsOpen(false);
       }, 1000);
     } catch (error) {
       console.log(error.message);
       verifyToast("error");
+      console.log(tecList);
     }
   }
 
@@ -89,6 +101,8 @@ export default function Home() {
           register={register}
           modalIsOpen={modalIsOpen}
           closeModal={closeModal}
+          onSubmit={handleSubmit(createTech)}
+          errors={errors}
         />
         <ToastContainer
           position="top-center"

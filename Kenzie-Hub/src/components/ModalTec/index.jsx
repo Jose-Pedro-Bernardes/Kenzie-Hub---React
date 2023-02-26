@@ -10,6 +10,7 @@ export default function ModalTec({
   modalIsOpen,
   closeModal,
   register,
+  errors,
 }) {
   return (
     <Modal
@@ -31,11 +32,13 @@ export default function ModalTec({
           <div className="label-align">
             <label htmlFor="name">Nome da tecnologia</label>
             <input
-              id="name"
+              id="title"
               type="text"
               placeholder="Preencha com a tecnologia.."
+              maxLength={20}
               {...register("title")}
             />
+            <span>{errors.title?.message}</span>
           </div>
           <div className="label-align">
             <label htmlFor="status">Selecione o status</label>
