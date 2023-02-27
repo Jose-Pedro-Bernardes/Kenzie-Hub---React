@@ -5,30 +5,14 @@ import { Container } from "./home.styles.js";
 import { ToastContainer } from "react-toastify";
 import Button from "../../components/Button";
 import Teclist from "../../components/TecList";
-import { useForm } from "react-hook-form";
 import CreateTechModal from "../../components/CreateTechModal";
 import { verifyToast } from "../../helpers/verifyToast.js";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import { TecListContext } from "../../contexts/TecListContext";
 import { CreateTechContext } from "../../contexts/CreateTechContext";
 
 export default function Home() {
   const navigate = useNavigate();
-  const formSchema = yup.object().shape({
-    title: yup
-      .string()
-      .required("Preencha com a tecnologia.")
-      .matches(/^[^<>=$!()+{}\/?;,%#@'"[\]]*$/, "Caracteres inválidos."),
-  });
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(formSchema),
-  });
 
   const [user, setUser] = useState({});
   const userId = localStorage.getItem("@KenzieHub:userId");
@@ -37,9 +21,6 @@ export default function Home() {
 
   useEffect(() => {
     document.title = "Home · Kenzie Hub";
-    if (!localStorage.getItem("@KenzieHub:userId")) {
-      navigate("/");
-    }
     async function catchUser() {
       try {
         const res = await axiosInstance.get(`users/${userId}`);
@@ -47,6 +28,7 @@ export default function Home() {
         setUser(res.data);
       } catch (error) {
         console.log(error.message);
+        navigate("/");
       }
     }
     catchUser();
@@ -94,11 +76,7 @@ export default function Home() {
             </>
           ) : null}
         </main>
-        <CreateTechModal
-          register={register}
-          onSubmit={handleSubmit(createTech)}
-          errors={errors}
-        />
+        <CreateTechModal />
         <ToastContainer
           position="top-center"
           autoClose={1500}
