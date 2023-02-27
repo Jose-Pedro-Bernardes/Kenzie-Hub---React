@@ -31,7 +31,7 @@ export const Form = styled.form`
     color: var(--grey-1);
     margin-bottom: 28px;
   }
-  .labeAlign {
+  .labelAlign {
     width: 20.375rem;
     max-width: 92%;
     display: flex;

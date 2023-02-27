@@ -50,7 +50,6 @@ export default function LoginPage() {
         navigate(`/home/${response.data.user.name}`);
       }, 2000);
     } catch (error) {
-      console.log(error);
       verifyToast("error");
     }
   }

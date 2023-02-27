@@ -26,7 +26,7 @@ export const Form = styled.form`
     justify-content: center;
   }
 
-  .labeAlign {
+  .labelAlign {
     width: 20.375rem;
     max-width: 92%;
     display: flex;
@@ -103,7 +103,7 @@ export const Form = styled.form`
       max-width: 100%;
     }
 
-    .labeAlign {
+    .labelAlign {
       max-width: 100%;
     }
   }

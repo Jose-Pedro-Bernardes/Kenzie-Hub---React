@@ -27,7 +27,6 @@ export default function Home() {
         setTecList(res.data.techs);
         setUser(res.data);
       } catch (error) {
-        console.log(error.message);
         navigate("/");
       }
     }
@@ -46,7 +45,6 @@ export default function Home() {
         closeModal();
       }, 1000);
     } catch (error) {
-      console.log(error.message);
       verifyToast("error");
     }
   }

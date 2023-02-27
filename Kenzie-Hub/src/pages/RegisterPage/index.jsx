@@ -69,7 +69,6 @@ export default function RegisterPage() {
         navigate("/");
       }, 2000);
     } catch (error) {
-      console.log(error);
       verifyToast("error");
     }
   }
