@@ -1,22 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import Button from "../Button";
 import Modal from "react-modal";
 import { Container } from "./createTechModal.styles.js";
+import { CreateTechContext } from "../../contexts/CreateTechContext";
 
 Modal.setAppElement("#root");
 
-export default function CreateTechModal({
-  onSubmit,
-  modalIsOpen,
-  closeModal,
-  register,
-  errors,
-}) {
+export default function CreateTechModal({ onSubmit, register, errors }) {
+  const { createIsOpen, closeModal } = useContext(CreateTechContext);
   return (
     <Modal
       className="modal"
       overlayClassName="modal-overlay"
-      isOpen={modalIsOpen}
+      isOpen={createIsOpen}
       onRequestClose={closeModal}
       contentLabel="Example Modal"
       closeTimeoutMS={500}

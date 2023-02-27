@@ -7,9 +7,7 @@ import { TecListProvider } from "./contexts/TecListContext";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      <TecListProvider>
-        <App />
-      </TecListProvider>
+      <App />
     </BrowserRouter>
   </React.StrictMode>
 );

@@ -12,6 +12,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import { TecListContext } from "../../contexts/TecListContext";
+import { CreateTechContext } from "../../contexts/CreateTechContext";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ export default function Home() {
     title: yup
       .string()
       .required("Preencha com a tecnologia.")
-      .matches(/^[^<>=$!()+{}\/?;.,%#@'"[\] ]*$/, "Caracteres inválidos."),
+      .matches(/^[^<>=$!()+{}\/?;,%#@'"[\]]*$/, "Caracteres inválidos."),
   });
   const {
     register,
@@ -30,9 +31,9 @@ export default function Home() {
   });
 
   const [user, setUser] = useState({});
-  const [modalIsOpen, setIsOpen] = useState(false);
   const userId = localStorage.getItem("@KenzieHub:userId");
   const { tecList, setTecList } = useContext(TecListContext);
+  const { openModal, closeModal } = useContext(CreateTechContext);
 
   useEffect(() => {
     document.title = "Home · Kenzie Hub";
@@ -60,20 +61,12 @@ export default function Home() {
       setTecList([...tecList, res.data]);
       verifyToast("success", "Tecnologia adicionada!");
       setTimeout(() => {
-        setIsOpen(false);
+        closeModal();
       }, 1000);
     } catch (error) {
       console.log(error.message);
       verifyToast("error");
     }
-  }
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
   }
 
   return (
@@ -103,8 +96,6 @@ export default function Home() {
         </main>
         <CreateTechModal
           register={register}
-          modalIsOpen={modalIsOpen}
-          closeModal={closeModal}
           onSubmit={handleSubmit(createTech)}
           errors={errors}
         />
