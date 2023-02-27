@@ -39,7 +39,7 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
 
-    .label-align {
+    .labelAlign {
       width: 20.375rem;
       max-width: 92%;
       display: flex;
