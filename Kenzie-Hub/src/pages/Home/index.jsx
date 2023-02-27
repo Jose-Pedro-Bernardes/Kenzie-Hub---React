@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { axiosInstance } from "../../axios/axiosInstance";
 import Header from "../../components/Header";
 import { Container } from "./home.styles.js";
@@ -11,6 +11,7 @@ import { verifyToast } from "../../helpers/verifyToast.js";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
+import { TecListContext } from "../../contexts/TecListContext";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -29,9 +30,9 @@ export default function Home() {
   });
 
   const [user, setUser] = useState({});
-  const [tecList, setTecList] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
   const userId = localStorage.getItem("@KenzieHub:userId");
+  const { tecList, setTecList } = useContext(TecListContext);
 
   useEffect(() => {
     document.title = "Home · Kenzie Hub";
