@@ -28,20 +28,16 @@ export default function LoginPage() {
 
   useEffect(() => {
     document.title = "Login · Kenzie Hub";
-    if (localStorage.getItem("@KenzieHub:userId")) {
-      const userId = localStorage.getItem("@KenzieHub:userId");
-      async function isThereaUser() {
-        try {
-          setTimeout(async () => {
-            const response = await axiosInstance.get(`users/${userId}`);
-            navigate(`/home/${response.data.name}`);
-          }, 2500);
-        } catch (error) {
-          console.log(error);
-        }
-      }
-      isThereaUser();
+    const userId = localStorage.getItem("@KenzieHub:userId");
+    async function isThereaUser() {
+      try {
+        setTimeout(async () => {
+          const response = await axiosInstance.get(`users/${userId}`);
+          navigate(`/home/${response.data.name}`);
+        }, 2500);
+      } catch (error) {}
     }
+    isThereaUser();
   });
 
   async function loginUser(data) {
