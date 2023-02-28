@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { ContainerOverflow } from "./tecList.styles.js";
 import Button from "../Button/index.jsx";
 import { axiosInstance } from "../../axios/axiosInstance.js";
@@ -16,9 +16,7 @@ export default function Teclist() {
         const userId = localStorage.getItem("@KenzieHub:userId");
         const res = await axiosInstance.get(`users/${userId}`);
         setTecList(res.data.techs);
-      } catch (error) {
-        console.log(error.message);
-      }
+      } catch (error) {}
     }
     showTecList();
   }, []);
@@ -26,7 +24,6 @@ export default function Teclist() {
   function onOpenModal(id) {
     setTecId(id);
     openModal();
-    console.log(id);
   }
 
   return (

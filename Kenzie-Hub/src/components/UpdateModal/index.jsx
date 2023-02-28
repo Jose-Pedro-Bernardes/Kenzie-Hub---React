@@ -1,11 +1,8 @@
 import React, { useContext } from "react";
-import Input from "../Input";
 import SelectInput from "../SelectInput";
 import Button from "../Button";
 import Modal from "react-modal";
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { UpdateTechContext } from "../../contexts/UpdateTechContext";
 import { Container } from "./updateModal.js";
 import { axiosInstance } from "../../axios/axiosInstance";
