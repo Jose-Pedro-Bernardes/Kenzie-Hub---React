@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
+import { TecListContext } from "./TecListContext";
 
 export const UpdateTechContext = createContext({});
 

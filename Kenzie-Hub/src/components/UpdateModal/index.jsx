@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Input from "../Input";
 import SelectInput from "../SelectInput";
 import Button from "../Button";
@@ -6,26 +6,33 @@ import Modal from "react-modal";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { UpdateTechContext } from "../../contexts/UpdateTechContext";
+import { Container } from "./updateModal.js";
 import { axiosInstance } from "../../axios/axiosInstance";
+import { verifyToast } from "../../helpers/verifyToast";
+import { TecListContext } from "../../contexts/TecListContext";
 
 export default function UpdateModal() {
-  const formSchema = yup.object().shape({
-    title: yup
-      .string()
-      .required("Preencha com a tecnologia.")
-      .matches(/^[^<>=$!()+{}\/?;,%#@'"[\]]*$/, "Caracteres inválidos."),
-  });
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(formSchema),
-  });
+  const { register, handleSubmit } = useForm();
+  const { updateIsOpen, closeModal } = useContext(UpdateTechContext);
+  const { tecId } = useContext(TecListContext);
+
+  function updateTech(data) {
+    const token = localStorage.getItem("@KenzieHub:token");
+    try {
+      const res = axiosInstance.put(`users/techs/${tecId}`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      verifyToast("success", "Tecnologia atualizada!", "top-right");
+    } catch (error) {
+      verifyToast("error", "Algo deu errado.", "top-right");
+    }
+  }
+
   return (
     <>
       <Modal
-        className="modal"
+        className="modalUpdate"
         overlayClassName="modal-overlay"
         isOpen={updateIsOpen}
         onRequestClose={closeModal}
@@ -37,32 +44,23 @@ export default function UpdateModal() {
             X
           </button>
           <div className="container__header">
-            <h3>Cadastrar tecnogia</h3>
+            <h3>Atualizar o status</h3>
           </div>
-          <form onSubmit={handleSubmit(createTech)}>
-            <Input
-              labelText="Nome da tecnologia"
-              ID="title"
-              type="text"
-              placeholder="Preencha com a tecnologia.."
-              maxLength={30}
-              register={register}
-            >
-              <span>{errors.title?.message}</span>
-            </Input>
-
-            <SelectInput
-              labelText="Selecione o status"
-              ID="status"
-              register={register}
-            >
-              <option disabled>Escolha a tecnologia</option>
+          <form onSubmit={handleSubmit(updateTech)}>
+            <SelectInput labelText="Status" ID="status" register={register}>
+              <option disabled>Escolha o status</option>
               <option value="Iniciante">Iniciante</option>
               <option value="Intermediário">Intermediário</option>
               <option value="Avançado">Avançado</option>
             </SelectInput>
-
-            <Button type="submit" text="Cadastrar Tecnologia" />
+            <div>
+              <Button
+                className="main-btn"
+                type="submit"
+                text="Atualizar Status"
+              />
+              <Button className="btn-delete" text="Excluir" />
+            </div>
           </form>
         </Container>
       </Modal>
