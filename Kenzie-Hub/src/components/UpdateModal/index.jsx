@@ -3,8 +3,25 @@ import Input from "../Input";
 import SelectInput from "../SelectInput";
 import Button from "../Button";
 import Modal from "react-modal";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { axiosInstance } from "../../axios/axiosInstance";
 
 export default function UpdateModal() {
+  const formSchema = yup.object().shape({
+    title: yup
+      .string()
+      .required("Preencha com a tecnologia.")
+      .matches(/^[^<>=$!()+{}\/?;,%#@'"[\]]*$/, "Caracteres inválidos."),
+  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(formSchema),
+  });
   return (
     <>
       <Modal

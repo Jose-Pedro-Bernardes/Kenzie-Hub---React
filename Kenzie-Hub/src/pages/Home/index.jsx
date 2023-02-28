@@ -11,13 +11,14 @@ import { TecListContext } from "../../contexts/TecListContext";
 import { CreateTechContext } from "../../contexts/CreateTechContext";
 import { UserContext } from "../../contexts/UserContext";
 import { verifyToast } from "../../helpers/verifyToast";
+import { UpdateTechProvider } from "../../contexts/UpdateTechContext";
 
 export default function Home() {
   const navigate = useNavigate();
 
   const { user, setUser } = useContext(UserContext);
   const { tecList, setTecList } = useContext(TecListContext);
-  const { openModal, closeModal } = useContext(CreateTechContext);
+  const { openModal } = useContext(CreateTechContext);
 
   useEffect(() => {
     document.title = "Home · Kenzie Hub";
@@ -36,43 +37,45 @@ export default function Home() {
 
   return (
     <>
-      <Container>
-        <Header />
-        <main>
-          {user.name ? (
-            <>
-              <section className="main__header">
-                <div className="align-between">
-                  <h1>Olá, {user.name}!</h1>
-                  <p>{user.course_module}</p>{" "}
-                </div>
-              </section>
-              <section className="main__body">
-                <div className="main__body--header">
-                  <h2>Tecnologias</h2>
-                  <Button onClick={openModal} type="button" text="+" />
-                </div>
-              </section>
-              <section className="section-list">
-                <Teclist />
-              </section>
-            </>
-          ) : null}
-        </main>
-        <CreateTechModal />
-        <ToastContainer
-          position="top-center"
-          autoClose={1500}
-          hideProgressBar
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="dark"
-        />
-      </Container>
+      <UpdateTechProvider>
+        <Container>
+          <Header />
+          <main>
+            {user.name ? (
+              <>
+                <section className="main__header">
+                  <div className="align-between">
+                    <h1>Olá, {user.name}!</h1>
+                    <p>{user.course_module}</p>{" "}
+                  </div>
+                </section>
+                <section className="main__body">
+                  <div className="main__body--header">
+                    <h2>Tecnologias</h2>
+                    <Button onClick={openModal} type="button" text="+" />
+                  </div>
+                </section>
+                <section className="section-list">
+                  <Teclist />
+                </section>
+              </>
+            ) : null}
+          </main>
+          <CreateTechModal />
+          <ToastContainer
+            position="top-center"
+            autoClose={1500}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+          />
+        </Container>
+      </UpdateTechProvider>
     </>
   );
 }
