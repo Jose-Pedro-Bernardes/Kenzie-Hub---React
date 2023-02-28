@@ -1,7 +1,4 @@
 import React, { useContext, useEffect } from "react";
-import * as yup from "yup";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import FormLogin from "../../components/FormLogin";
@@ -9,23 +6,10 @@ import { Container } from "./loginPage.styles.js";
 import logo from "../../assets/logoDesk.svg";
 import { axiosInstance } from "../../axios/axiosInstance";
 import { useNavigate } from "react-router-dom";
-import { verifyToast } from "../../helpers/verifyToast.js";
 import { UserContext } from "../../contexts/UserContext";
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const formSchema = yup.object().shape({
-    email: yup.string().required("Preencha com seu email."),
-    password: yup.string().required("Preencha com sua senha."),
-  });
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(formSchema),
-  });
 
   const { setUser } = useContext(UserContext);
 
@@ -44,20 +28,6 @@ export default function LoginPage() {
     isThereaUser();
   });
 
-  async function loginUser(data) {
-    try {
-      const response = await axiosInstance.post("sessions", data);
-      localStorage.setItem("@KenzieHub:token", response.data.token);
-      localStorage.setItem("@KenzieHub:userId", response.data.user.id);
-      verifyToast("success", "Login bem sucedido!", "top-right");
-      setTimeout(() => {
-        navigate(`/home/${response.data.user.name}`);
-      }, 2000);
-    } catch (error) {
-      verifyToast("error", "Usuário não encontrado.", "top-right");
-    }
-  }
-
   return (
     <>
       <Container>
@@ -65,11 +35,7 @@ export default function LoginPage() {
           <img src={logo} alt="Kenzie Hub" />
         </figure>
         <main>
-          <FormLogin
-            register={register}
-            onSubmit={handleSubmit(loginUser)}
-            errors={errors}
-          />
+          <FormLogin />
         </main>
         <ToastContainer
           position="top-center"
