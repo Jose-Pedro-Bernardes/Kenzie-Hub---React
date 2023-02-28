@@ -64,12 +64,12 @@ export default function RegisterPage() {
   async function registerUser(data) {
     try {
       const response = await axiosInstance.post("users", data);
-      verifyToast("success", "Usuário cadastrado!");
+      verifyToast("success", "Usuário cadastrado!", "top-right");
       setTimeout(() => {
         navigate("/");
       }, 2000);
     } catch (error) {
-      verifyToast("error");
+      verifyToast("error", "Algo deu errado.", "top-right");
     }
   }
 

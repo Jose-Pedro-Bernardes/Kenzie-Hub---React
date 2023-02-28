@@ -6,53 +6,38 @@ import { ToastContainer } from "react-toastify";
 import Button from "../../components/Button";
 import Teclist from "../../components/TecList";
 import CreateTechModal from "../../components/CreateTechModal";
-import { verifyToast } from "../../helpers/verifyToast.js";
 import { useNavigate } from "react-router-dom";
 import { TecListContext } from "../../contexts/TecListContext";
 import { CreateTechContext } from "../../contexts/CreateTechContext";
+import { UserContext } from "../../contexts/UserContext";
+import { verifyToast } from "../../helpers/verifyToast";
 
 export default function Home() {
   const navigate = useNavigate();
 
-  const [user, setUser] = useState({});
-  const userId = localStorage.getItem("@KenzieHub:userId");
+  const { user, setUser } = useContext(UserContext);
   const { tecList, setTecList } = useContext(TecListContext);
   const { openModal, closeModal } = useContext(CreateTechContext);
 
   useEffect(() => {
     document.title = "Home · Kenzie Hub";
-    async function catchUser() {
+
+    async function showTecList() {
       try {
+        const userId = localStorage.getItem("@KenzieHub:userId");
         const res = await axiosInstance.get(`users/${userId}`);
-        setTecList(res.data.techs);
         setUser(res.data);
       } catch (error) {
         navigate("/");
       }
     }
-    catchUser();
+    showTecList();
   }, []);
-
-  async function createTech(data) {
-    const token = localStorage.getItem("@KenzieHub:token");
-    try {
-      const res = await axiosInstance.post("users/techs", data, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setTecList([...tecList, res.data]);
-      verifyToast("success", "Tecnologia adicionada!");
-      setTimeout(() => {
-        closeModal();
-      }, 1000);
-    } catch (error) {
-      verifyToast("error");
-    }
-  }
 
   return (
     <>
       <Container>
-        <Header setUser={setUser} />
+        <Header />
         <main>
           {user.name ? (
             <>

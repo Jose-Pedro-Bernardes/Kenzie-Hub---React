@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -10,8 +10,10 @@ import logo from "../../assets/logoDesk.svg";
 import { axiosInstance } from "../../axios/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import { verifyToast } from "../../helpers/verifyToast.js";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function LoginPage() {
+  const navigate = useNavigate();
   const formSchema = yup.object().shape({
     email: yup.string().required("Preencha com seu email."),
     password: yup.string().required("Preencha com sua senha."),
@@ -24,7 +26,8 @@ export default function LoginPage() {
   } = useForm({
     resolver: yupResolver(formSchema),
   });
-  const navigate = useNavigate();
+
+  const { setUser } = useContext(UserContext);
 
   useEffect(() => {
     document.title = "Login · Kenzie Hub";
@@ -34,6 +37,7 @@ export default function LoginPage() {
         setTimeout(async () => {
           const response = await axiosInstance.get(`users/${userId}`);
           navigate(`/home/${response.data.name}`);
+          setUser(response.data);
         }, 2500);
       } catch (error) {}
     }
@@ -45,12 +49,12 @@ export default function LoginPage() {
       const response = await axiosInstance.post("sessions", data);
       localStorage.setItem("@KenzieHub:token", response.data.token);
       localStorage.setItem("@KenzieHub:userId", response.data.user.id);
-      verifyToast("success", "Login bem sucedido!");
+      verifyToast("success", "Login bem sucedido!", "top-right");
       setTimeout(() => {
         navigate(`/home/${response.data.user.name}`);
       }, 2000);
     } catch (error) {
-      verifyToast("error");
+      verifyToast("error", "Usuário não encontrado.", "top-right");
     }
   }
 
