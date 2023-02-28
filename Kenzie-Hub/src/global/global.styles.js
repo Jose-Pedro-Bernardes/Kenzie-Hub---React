@@ -50,6 +50,21 @@ body {
   padding-bottom: 20px;
 }
 
+.modalUpdate{
+  background-color: #212529;
+  width: 369px;
+  max-width: 95%;
+  height: 240px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border-radius: 4px;
+  padding-bottom: 20px;
+}
+
 .ReactModal__Overlay {
   opacity: 0;
   transition: opacity 400ms ease-in-out;

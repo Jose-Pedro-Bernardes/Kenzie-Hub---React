@@ -4,6 +4,7 @@ export const ContainerOverflow = styled.div`
   width: 48.75rem;
   height: 26rem;
   max-width: 95%;
+  position: relative;
 
   overflow-y: auto;
   overflow-x: hidden;
@@ -36,7 +37,21 @@ export const ContainerOverflow = styled.div`
       align-items: center;
       width: 100%;
       gap: 16px;
-      li {
+      .noTecnology {
+        width: 100%;
+        height: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+
+        h2 {
+          font-size: 25px;
+          font-weight: 700;
+          color: var(--grey-1);
+        }
+      }
+      .tecnology {
         width: 100%;
         height: 49px;
 

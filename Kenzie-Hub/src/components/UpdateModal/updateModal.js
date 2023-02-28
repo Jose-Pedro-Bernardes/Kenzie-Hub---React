@@ -35,6 +35,7 @@ export const Container = styled.div`
   }
   form {
     width: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -64,17 +65,6 @@ export const Container = styled.div`
         font-weight: 400;
       }
 
-      input {
-        width: 19.1rem;
-        height: 3rem;
-        max-width: 92%;
-        padding-left: 1rem;
-        border: none;
-        border-radius: 4px;
-        background-color: var(--grey-2);
-        outline-color: var(--grey-0);
-        color: var(--grey-0);
-      }
       .select {
         position: relative;
         display: flex;
@@ -96,7 +86,7 @@ export const Container = styled.div`
           cursor: pointer;
           flex: 1;
           background-image: none;
-          width: 19rem;
+          width: 100%;
           height: 3.3rem;
           max-width: 100%;
           padding-left: 1rem;
@@ -129,9 +119,32 @@ export const Container = styled.div`
         color: var(--grey-0);
       }
     }
-    button {
-      margin-top: 10px;
-      margin-bottom: 20px;
+    div {
+      width: 20.375rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 92%;
+      .btn-delete {
+        background-color: var(--grey-2);
+        margin-top: 10px;
+        margin-bottom: 20px;
+        width: 98px;
+        max-width: 100%;
+        font-size: var(--title-3);
+        font-weight: 500;
+        cursor: pointer;
+        :hover {
+          background-color: var(--grey-1);
+        }
+      }
+      .main-btn {
+        font-size: var(--title-3);
+        width: 50%;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        cursor: pointer;
+      }
     }
   }
 `;
