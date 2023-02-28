@@ -35,7 +35,7 @@ export const ContainerOverflow = styled.div`
       flex-direction: column;
       align-items: center;
       width: 100%;
-      gap: 20px;
+      gap: 16px;
       li {
         width: 100%;
         height: 49px;
@@ -45,6 +45,11 @@ export const ContainerOverflow = styled.div`
 
         background-color: var(--grey-4);
         border-radius: 4px;
+        transition: 1s;
+        :hover {
+          transform: scale(1.03);
+          background-color: var(--grey-2);
+        }
         button {
           width: 100%;
           height: 100%;

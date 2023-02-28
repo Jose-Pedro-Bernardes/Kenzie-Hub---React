@@ -39,13 +39,13 @@ export default function CreateTechModal() {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTecList([...tecList, res.data]);
-      verifyToast("success", "Tecnologia adicionada!");
+      verifyToast("success", "Tecnologia adicionada!", "top-right");
       setTimeout(() => {
         closeModal();
       }, 1000);
     } catch (error) {
       console.log(error.message);
-      verifyToast("error");
+      verifyToast("error", "Algo deu errado.", "top-right");
     }
   }
 
