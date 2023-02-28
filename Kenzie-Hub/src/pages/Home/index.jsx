@@ -7,17 +7,14 @@ import Button from "../../components/Button";
 import Teclist from "../../components/TecList";
 import CreateTechModal from "../../components/CreateTechModal";
 import { useNavigate } from "react-router-dom";
-import { TecListContext } from "../../contexts/TecListContext";
 import { CreateTechContext } from "../../contexts/CreateTechContext";
 import { UserContext } from "../../contexts/UserContext";
-import { verifyToast } from "../../helpers/verifyToast";
 import { UpdateTechProvider } from "../../contexts/UpdateTechContext";
 
 export default function Home() {
   const navigate = useNavigate();
 
   const { user, setUser } = useContext(UserContext);
-  const { tecList, setTecList } = useContext(TecListContext);
   const { openModal } = useContext(CreateTechContext);
 
   useEffect(() => {
